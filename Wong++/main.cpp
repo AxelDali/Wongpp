@@ -479,6 +479,71 @@ int D2(){
     return 0;
 }
 
+int K(){
+    //K-> ^(0-9)+$ | ^(0-9)+"\."(0-9)+$ | ^"\."(0-9)$
+    char c;
+    c = getchar();
+    if(c >= '0' && c <= '9'){
+        char c;
+        c = getchar();
+        while(c >= '0' && c <= '9'){
+            c = getchar();
+        }
+        ungetc(c, stdin);
+        if(c == '.'){
+            char c;
+            c = getchar();
+            if(c >= '0' && c <= '9'){
+            while(c >= '0' && c <= '9'){
+                c = getchar();
+            }
+            ungetc(c, stdin);
+            return 1;
+            }
+            ungetc(c, stdin);
+            return 1;
+        }
+    ungetc(c, stdin);
+    if(c == '.'){
+        char c;
+        c = getchar();
+        if(c >= '0' && c <= '9'){
+        while(c >= '0' && c <= '9'){
+            c = getchar();
+        }
+        ungetc(c, stdin);
+        return 1;
+        }
+    }
+    ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    return 0;
+}
+
+int P(){
+    //P-> K, P | K
+    char c;
+    c = getchar();
+    if(K()){
+        char c;
+        c = getchar();
+        if(c == ','){
+            if(P()){
+                return 1;
+            }
+            ungetc(c,stdin);
+        }
+        ungetc(c,stdin);
+    }
+    ungetc(c, stdin);
+    if(K()){
+        return 1;
+    }
+    ungetc(c,stdin);
+    return 0;
+}
+
 int I(){
     char c;
     c = getchar();
