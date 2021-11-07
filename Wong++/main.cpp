@@ -32,18 +32,18 @@ int T();
 
 int main()
 {
-    ///TO DO: Leer el archivo
-    /*if(S() && getchar()=='\n'){
+    /// TO DO: Leer el archivo
+    if(S() && getchar()=='\n'){
         cout<< "La palabra fue aceptada\n";
     }
     else{
         cout<< "La palabra no es aceptada\n";
-    }*/
+    }
     return 0;
 }
 
 int S(){
-    ///S -> {A}
+    /// S -> {A}
     char c;
     c = getchar();
     if(c == '{'){
@@ -59,7 +59,7 @@ int S(){
         }
     }
     ungetc(c, stdin);
-    ///S -> empty
+    /// S -> vacio
     ungetc(c, stdin);
     return 1;
 }
@@ -73,7 +73,7 @@ int A(){
             return 0;
         }
     }
-    if(C()){
+    /*if(C()){
         if(H()){
             return 1;
         }
@@ -112,7 +112,7 @@ int A(){
         else{
             return 0;
         }
-    }
+    }*/
     return 0;
 }
 
@@ -121,10 +121,13 @@ int B(){
     c = getchar();
     /// B-> int I B2
     if(c == 'i'){
+        char c;
         c = getchar();
         if(c == 'n'){
+            char c;
             c = getchar();
             if(c == 't'){
+                char c;
                 c = getchar();
                 if(c == ' '){
                     while(c == ' '){
@@ -132,13 +135,14 @@ int B(){
                     }
                     ungetc(c, stdin);
                     if(I()){
+                        char c;
                         c = getchar();
                         if(c == ' '){
                             while(c == ' '){
                                 c = getchar();
                             }
                             ungetc(c, stdin);
-                            if(B2){
+                            if(B2()){
                                 return 1;
                             }
                         }
@@ -153,4 +157,109 @@ int B(){
     }
     ungetc(c, stdin);
     return 0;
+}
+
+int B2(){
+    char c;
+    c = getchar();
+    /// B2-> : J
+    if(c == ':'){
+        char c;
+        c = getchar();
+        if(c == ' '){
+            while(c == ' '){
+                c = getchar();
+            }
+            ungetc(c, stdin);
+            if(J()){
+                return 1;
+            }
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    c = getchar();
+    /// B2-> [] : {O}
+    if(c == '['){
+        char c;
+        c = getchar();
+        if(c == ']'){
+            char c;
+            c = getchar();
+            if(c == ' '){
+                while(c == ' '){
+                    c = getchar();
+                }
+                if(c == ':'){
+                    char c;
+                    c = getchar();
+                    if(c == ' '){
+                        while(c == ' '){
+                            c = getchar();
+                        }
+                        if(c == '{'){
+                            if(O()){
+                                char c;
+                                c = getchar();
+                                if(c == '}'){
+                                    return 1;
+                                }
+                                ungetc(c, stdin);
+                            }
+                            ungetc(c, stdin);
+                        }
+                        ungetc(c, stdin);
+                    }
+                    ungetc(c, stdin);
+                }
+                ungetc(c, stdin);
+            }
+            ungetc(c, stdin);
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    return 0;
+}
+
+int H(){
+    char c;
+    c = getchar();
+    /// H-> , A
+    if(c == ','){
+        char c;
+        c = getchar();
+        if(c == ' '){
+            while(c == ' '){
+                c = getchar();
+            }
+            ungetc(c, stdin);
+            if(A()){
+                return 1;
+            }
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    /// H -> vacio
+    ///ungetc(c, stdin);
+    return 1;
+}
+
+int I(){
+    char c;
+    c = getchar();
+    return 1;
+}
+
+int J(){
+    char c;
+    c = getchar();
+    return 1;
+}
+
+int O(){
+    char c;
+    c = getchar();
+    return 1;
 }

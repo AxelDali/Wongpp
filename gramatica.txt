@@ -15,14 +15,14 @@ B2-> : J || [] : {O}
 C-> float I C2
 C2-> : K || [] : {P}
 D-> double I D2
-D2-> : J || [] : {P}
+D2-> : K || [] : {P}
 E-> bool I E2
-E2-> : K || [] : {P}
+E2-> : L || [] : {Q}
 F-> char I F2
-F2-> : L || [] : {Q}
+F2-> : M || [] : {R}
 G-> string I G2
-G2-> : M || []: {R}
-H-> , B | empty
+G2-> : N || []: {T}
+H-> , A | empty
 I-> ^(A-Za-z_)(A-Za-z_0-9)*     #No puede ser A,B,C,D,E,F
 J-> ^(0-9)+$
 K-> ^(0-9)+$ | ^(0-9)+"\."(0-9)+$ | ^"\."(0-9)$
