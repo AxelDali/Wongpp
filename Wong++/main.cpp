@@ -255,7 +255,15 @@ int I(){
 int J(){
     char c;
     c = getchar();
-    return 1;
+    if(c >= '0' && c <= '9'){
+        while(c >= '0' && c <= '9'){
+            c = getchar();
+        }
+        ungetc(c, stdin);
+        return 1;
+    }
+    ungetc(c, stdin);
+    return 0;
 }
 
 int O(){

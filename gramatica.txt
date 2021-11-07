@@ -8,29 +8,29 @@ string          F
 
 
 S -> {MEA:"B"}| {MEA:"B"},|{MEAE:E"B"E}|{MEAE:E"B"E},|{S}|{S}
-S -> {A} || empty
+S -> {A} | empty
 A -> BH | CH | DH | EH | FH | GH
 B-> int I B2
-B2-> : J || [] : {O}
+B2-> : J | [] : {O}
 C-> float I C2
-C2-> : K || [] : {P}
+C2-> : K | [] : {P}
 D-> double I D2
-D2-> : K || [] : {P}
+D2-> : K | [] : {P}
 E-> bool I E2
-E2-> : L || [] : {Q}
+E2-> : L | [] : {Q}
 F-> char I F2
-F2-> : M || [] : {R}
+F2-> : M | [] : {R}
 G-> string I G2
-G2-> : N || []: {T}
-H-> , A | empty
+G2-> : N | []: {T}
+H-> | , A | , '\n' A | '\n' | empty
 I-> ^(A-Za-z_)(A-Za-z_0-9)*     #No puede ser A,B,C,D,E,F
 J-> ^(0-9)+$
 K-> ^(0-9)+$ | ^(0-9)+"\."(0-9)+$ | ^"\."(0-9)$
-L-> true || false || 0 || 1
+L-> true | false | 0 | 1
 M-> ^'.'$                       #Puede haber casos especiales para los caracteres de escape '\n','\t', etc.
 N-> ^".*"$
-O-> ^(0-9)+$, O | ^(0-9)+$
-P-> ^(0-9)+$, P | ^(0-9)+"\."(0-9)+$, P | ^"\."(0-9)$, P | ^(0-9)+$ | ^(0-9)+"\."(0-9)+$ | ^"\."(0-9)$
-Q-> true, Q || false, Q || 0, Q || 1, Q || true || false || 0 || 1
-R-> ^'.'$, R || ^'.'$
-T-> ^".*"$, T || ^".*"$
+O-> J, O | J
+P-> K, P | K
+Q-> L, Q | L
+R-> M, R | M
+T-> N, T | N
