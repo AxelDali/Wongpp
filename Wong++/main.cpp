@@ -222,6 +222,26 @@ int B2(){
     return 0;
 }
 
+int E2(){
+
+}
+
+int F(){
+    
+}
+
+int F2(){
+    
+}
+
+int G(){
+    
+}
+
+int G2(){
+    
+}
+
 int H(){
     char c;
     c = getchar();
