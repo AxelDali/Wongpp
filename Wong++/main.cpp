@@ -227,19 +227,237 @@ int E2(){
 }
 
 int F(){
-    
+    char c;
+    c = getchar();
+    /// F-> char I F2
+    if(c == 'c'){
+        char c;
+        c = getchar();
+        if(c == 'h'){
+            char c;
+            c = getchar();
+            if(c == 'a'){
+                char c;
+                c = getchar();
+                if(c == 'r'){
+                    char c;
+                    c = getchar();
+                    if(c == ' '){
+                        while(c == ' '){
+                            c = getchar();
+                        }
+                        ungetc(c, stdin);
+                        if(I()){
+                            char c;
+                            c = getchar();
+                            if(c == ' '){
+                                while(c == ' '){
+                                    c = getchar();
+                                }
+                                ungetc(c, stdin);
+                                if(B2()){
+                                    return 1;
+                                }
+                            }
+                        }
+                        ungetc(c, stdin);
+                    }
+                    ungetc(c, stdin);
+                }
+                ungetc(c, stdin);
+            }
+            ungetc(c, stdin);
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    return 0;
 }
 
 int F2(){
-    
+    char c;
+    c = getchar();
+    /// F2-> : M
+    if(c == ':'){
+        char c;
+        c = getchar();
+        if(c == ' '){
+            while(c == ' '){
+                c = getchar();
+            }
+            ungetc(c, stdin);
+            if(M()){
+                return 1;
+            }
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    c = getchar();
+    /// F2-> [] : {R}
+    if(c == '['){
+        char c;
+        c = getchar();
+        if(c == ']'){
+            char c;
+            c = getchar();
+            if(c == ' '){
+                while(c == ' '){
+                    c = getchar();
+                }
+                if(c == ':'){
+                    char c;
+                    c = getchar();
+                    if(c == ' '){
+                        while(c == ' '){
+                            c = getchar();
+                        }
+                        if(c == '{'){
+                            if(R()){
+                                char c;
+                                c = getchar();
+                                if(c == '}'){
+                                    return 1;
+                                }
+                                ungetc(c, stdin);
+                            }
+                            ungetc(c, stdin);
+                        }
+                        ungetc(c, stdin);
+                    }
+                    ungetc(c, stdin);
+                }
+                ungetc(c, stdin);
+            }
+            ungetc(c, stdin);
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    return 0;
 }
 
 int G(){
-    
+    {
+    char c;
+    c = getchar();
+    /// G-> string I G2
+    if(c == 's'){
+        char c;
+        c = getchar();
+        if(c == 't'){
+            char c;
+            c = getchar();
+            if(c == 'r'){
+                char c;
+                c = getchar();
+                if(c == 'i'){
+                    char c;
+                    c = getchar();
+                    if(c == 'n'){ 
+                        char c;
+                        c = getchar();
+                        if(c == 'g'){  
+                            char c;
+                            c = getchar();         
+                            if(c == ' '){
+                                while(c == ' '){
+                                    c = getchar();
+                                }
+                                ungetc(c, stdin);
+                                if(I()){
+                                    char c;
+                                    c = getchar();
+                                    if(c == ' '){
+                                        while(c == ' '){
+                                            c = getchar();
+                                        }
+                                        ungetc(c, stdin);
+                                        if(B2()){
+                                            return 1;
+                                        }
+                                    }
+                                }
+                                ungetc(c, stdin);
+                            }
+                            ungetc(c, stdin);
+                        }
+                        ungetc(c, stdin);
+                    }
+                    ungetc(c, stdin);
+                }
+                ungetc(c, stdin);
+            }
+            ungetc(c, stdin);
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    return 0;
+}
 }
 
 int G2(){
-    
+    char c;
+    c = getchar();
+    /// G2-> : N
+    if(c == ':'){
+        char c;
+        c = getchar();
+        if(c == ' '){
+            while(c == ' '){
+                c = getchar();
+            }
+            ungetc(c, stdin);
+            if(N()){
+                return 1;
+            }
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    c = getchar();
+    /// G2-> [] : {T}
+    if(c == '['){
+        char c;
+        c = getchar();
+        if(c == ']'){
+            char c;
+            c = getchar();
+            if(c == ' '){
+                while(c == ' '){
+                    c = getchar();
+                }
+                if(c == ':'){
+                    char c;
+                    c = getchar();
+                    if(c == ' '){
+                        while(c == ' '){
+                            c = getchar();
+                        }
+                        if(c == '{'){
+                            if(T()){
+                                char c;
+                                c = getchar();
+                                if(c == '}'){
+                                    return 1;
+                                }
+                                ungetc(c, stdin);
+                            }
+                            ungetc(c, stdin);
+                        }
+                        ungetc(c, stdin);
+                    }
+                    ungetc(c, stdin);
+                }
+                ungetc(c, stdin);
+            }
+            ungetc(c, stdin);
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    return 0;
 }
 
 int H(){
