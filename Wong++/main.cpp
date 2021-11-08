@@ -496,8 +496,97 @@ int J(){
     return 1;
 }
 
+int M(){
+    char c;
+    c = getchar();
+    //M-> ^'.'$  
+    if(c == 39){
+        char c;
+        c = getchar();
+        if(c == 'Cambiar'){
+            char c;
+            c = getchar();
+            if(c == 39){
+                return 1;
+            }
+            ungetc(c, stdin);
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+}
+
+int N(){
+    char c;
+    c = getchar();
+    //N-> ^".*"$ 
+    if(c == '"'){
+        char c;
+        c = getchar();
+        if(c == 'Cambiar'){
+            while(c == 'Cambiar'){
+                c = getchar();
+            }
+            ungetc(c, stdin);
+            char c;
+            c = getchar();
+            if(c == '"'){
+                return 1;
+            }
+            ungetc(c, stdin);
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+}
+
 int O(){
     char c;
     c = getchar();
     return 1;
+}
+int R(){
+    char c;
+    c = getchar();
+    //R-> M, R | M
+    if(M()){
+        char c;
+        c = getchar();
+        if(c == ','){
+            if(R()){
+                return 1;
+            }
+            ungetc(c,stdin);
+        }
+        ungetc(c,stdin);
+    }
+    ungetc(c, stdin);
+    if(M()){
+        return 1;
+    }
+    ungetc(c,stdin);
+    return 0;
+}
+
+int T(){
+    char c;
+    c = getchar();
+    //T-> N, T | N
+    if(N()){
+        char c;
+        c = getchar();
+        if(c == ','){
+            if(T()){
+                return 1;
+            }
+            ungetc(c,stdin);
+        }
+        ungetc(c,stdin);
+    }
+    ungetc(c, stdin);
+    if(N()){
+        return 1;
+    }
+    ungetc(c,stdin);
+    return 0;
 }
