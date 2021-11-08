@@ -522,25 +522,30 @@ int K(){
 }
 
 int P(){
-    //P-> K, P | K
-    char c;
-    c = getchar();
+    //P-> K, P 
     if(K()){
         char c;
         c = getchar();
         if(c == ','){
+            char c;
+            c = getchar();
+            if(c == ' '){
+                while(c == ' '){
+                    c = getchar();
+                }
+                ungetc(c, stdin);
+            }
+            else{
+                ungetc(c, stdin);
+            }
             if(P()){
                 return 1;
             }
-            ungetc(c,stdin);
         }
-        ungetc(c,stdin);
-    }
-    ungetc(c, stdin);
-    if(K()){
+        ungetc(c, stdin);
+        /// P-> K
         return 1;
     }
-    ungetc(c,stdin);
     return 0;
 }
 
