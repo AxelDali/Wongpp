@@ -68,14 +68,11 @@ int S(){
             if(c == '}'){
                 return 1;
             }
-            else{
-                return 0;
-            }
         }
+        return 0;
     }
     ungetc(c, stdin);
     /// S -> vacio
-    ungetc(c, stdin);
     return 1;
 }
 
@@ -331,7 +328,15 @@ int H(){
 int I(){
     char c;
     c = getchar();
-    return 1;
+    if(c == '_' || (c >= 'a' && c <= 'z') || (c >= 'A' && c<= 'Z')){
+        while(c == '_' || (c >= 'a' && c <= 'z') || (c >= 'A' && c<= 'Z')){
+            c = getchar();
+        }
+        ungetc(c, stdin);
+        return 1;
+    }
+    ungetc(c, stdin);
+    return 0;
 }
 
 int J(){
