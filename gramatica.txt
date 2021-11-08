@@ -8,7 +8,7 @@ string          F
 
 
 S -> {MEA:"B"}| {MEA:"B"},|{MEAE:E"B"E}|{MEAE:E"B"E},|{S}|{S}
-S -> {A} | empty
+S -> {A} | {'\n'A} | empty
 A -> BH | CH | DH | EH | FH | GH
 B-> int I B2
 B2-> : J | [] : {O}

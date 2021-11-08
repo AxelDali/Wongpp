@@ -47,6 +47,21 @@ int S(){
     char c;
     c = getchar();
     if(c == '{'){
+        char c;
+        c = getchar();
+        if(c == ' '){
+            while(c == ' '){
+                c = getchar();
+            }
+            ungetc(c, stdin);
+        }
+        else{
+            ungetc(c, stdin);
+        }
+        c = getchar();
+        if(c != '\n'){
+            ungetc(c, stdin);
+        }
         if(A()){
             char c;
             c = getchar();
@@ -142,9 +157,12 @@ int B(){
                                 c = getchar();
                             }
                             ungetc(c, stdin);
-                            if(B2()){
+                        }
+                        else{
+                            ungetc(c, stdin);
+                        }
+                        if(B2()){
                                 return 1;
-                            }
                         }
                     }
                     ungetc(c, stdin);
@@ -171,11 +189,11 @@ int B2(){
                 c = getchar();
             }
             ungetc(c, stdin);
-            if(J()){
-                return 1;
-            }
         }
         ungetc(c, stdin);
+        if(J()){
+                return 1;
+        }
     }
     ungetc(c, stdin);
     c = getchar();
@@ -190,31 +208,59 @@ int B2(){
                 while(c == ' '){
                     c = getchar();
                 }
-                if(c == ':'){
+                ungetc(c, stdin);
+            }
+            else{
+                ungetc(c, stdin);
+            }
+            c = getchar();
+            if(c == ':'){
                     char c;
                     c = getchar();
                     if(c == ' '){
                         while(c == ' '){
                             c = getchar();
                         }
-                        if(c == '{'){
+                        ungetc(c, stdin);
+                    }
+                    else{
+                        ungetc(c, stdin);
+                    }
+                    c = getchar();
+                    if(c == '{'){
+                            char c;
+                            c = getchar();
+                            if(c == ' '){
+                                while(c == ' '){
+                                    c = getchar();
+                                }
+                                ungetc(c, stdin);
+                            }
+                            else{
+                                ungetc(c, stdin);
+                            }
                             if(O()){
                                 char c;
+                                c = getchar();
+                                if(c == ' '){
+                                    while(c == ' '){
+                                        c = getchar();
+                                    }
+                                    ungetc(c, stdin);
+                                }
+                                else{
+                                    ungetc(c, stdin);
+                                }
                                 c = getchar();
                                 if(c == '}'){
                                     return 1;
                                 }
                                 ungetc(c, stdin);
                             }
-                            ungetc(c, stdin);
                         }
                         ungetc(c, stdin);
-                    }
-                    ungetc(c, stdin);
                 }
                 ungetc(c, stdin);
-            }
-            ungetc(c, stdin);
         }
         ungetc(c, stdin);
     }
@@ -234,15 +280,51 @@ int H(){
                 c = getchar();
             }
             ungetc(c, stdin);
+        }
+        else{
+            ungetc(c, stdin);
+        }
+        if(A()){
+            return 1;
+        }
+    }
+    ungetc(c, stdin);
+    c = getchar();
+    /// H-> , '\n' A
+    if(c == ','){
+        char c;
+        c = getchar();
+        if(c == ' '){
+            while(c == ' '){
+                c = getchar();
+            }
+            ungetc(c, stdin);
+        }
+        ungetc(c, stdin);
+        c = getchar();
+        if(c == '\n'){
+            while(c == '\n'){
+                c = getchar();
+            }
+            ungetc(c, stdin);
             if(A()){
                 return 1;
             }
         }
         ungetc(c, stdin);
     }
+    /// H-> '\n'
     ungetc(c, stdin);
-    /// H -> vacio
-    ///ungetc(c, stdin);
+    c = getchar();
+    if(c == '\n'){
+        while(c == '\n'){
+            c = getchar();
+        }
+        ungetc(c, stdin);
+        return 1;
+    }
+    /// H-> vacio
+    ungetc(c, stdin);
     return 1;
 }
 
@@ -267,7 +349,29 @@ int J(){
 }
 
 int O(){
-    char c;
-    c = getchar();
-    return 1;
+    /// O-> J, O
+    if(J()){
+        char c;
+        c = getchar();
+        if(c == ','){
+            char c;
+            c = getchar();
+            if(c == ' '){
+                while(c == ' '){
+                    c = getchar();
+                }
+                ungetc(c, stdin);
+            }
+            else{
+                ungetc(c, stdin);
+            }
+            if(O()){
+                return 1;
+            }
+        }
+        ungetc(c, stdin);
+        /// O-> J
+        return 1;
+    }
+    return 0;
 }
