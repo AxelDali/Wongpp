@@ -29,6 +29,7 @@ int P();
 int Q();
 int R();
 int T();
+void aux();
 
 int main()
 {
@@ -42,38 +43,34 @@ int main()
     return 0;
 }
 
+void optional_whitespace(){
+    char c;
+    c = getchar();
+    if(c == ' '){
+        while(c == ' '){
+            c = getchar();
+        }
+        ungetc(c, stdin);
+    }
+    else{
+        ungetc(c, stdin);
+    }
+}
+
 int S(){
     /// S -> {A}
     char c;
     c = getchar();
     if(c == '{'){
+        optional_whitespace();
         char c;
-        c = getchar();
-        if(c == ' '){
-            while(c == ' '){
-                c = getchar();
-            }
-            ungetc(c, stdin);
-        }
-        else{
-            ungetc(c, stdin);
-        }
         c = getchar();
         if(c != '\n'){
             ungetc(c, stdin);
         }
         if(A()){
+            optional_whitespace();
             char c;
-            c = getchar();
-            if(c == ' '){
-                while(c == ' '){
-                    c = getchar();
-                }
-                ungetc(c, stdin);
-            }
-            else{
-                ungetc(c, stdin);
-            }
             c = getchar();
             if(c == '}'){
                 return 1;
@@ -152,27 +149,11 @@ int B(){
                 char c;
                 c = getchar();
                 if(c == ' '){
-                    while(c == ' '){
-                        c = getchar();
-                    }
-                    ungetc(c, stdin);
                     if(I()){
-                        char c;
-                        c = getchar();
-                        if(c == ' '){
-                            while(c == ' '){
-                                c = getchar();
-                            }
-                            ungetc(c, stdin);
-                        }
-                        else{
-                            ungetc(c, stdin);
-                        }
                         if(B2()){
-                                return 1;
+                            return 1;
                         }
                     }
-                    ungetc(c, stdin);
                 }
                 ungetc(c, stdin);
             }
@@ -189,15 +170,7 @@ int B2(){
     c = getchar();
     /// B2-> : J
     if(c == ':'){
-        char c;
-        c = getchar();
-        if(c == ' '){
-            while(c == ' '){
-                c = getchar();
-            }
-            ungetc(c, stdin);
-        }
-        ungetc(c, stdin);
+        optional_whitespace();
         if(J()){
                 return 1;
         }
@@ -209,55 +182,18 @@ int B2(){
         char c;
         c = getchar();
         if(c == ']'){
+            optional_whitespace();
             char c;
             c = getchar();
-            if(c == ' '){
-                while(c == ' '){
-                    c = getchar();
-                }
-                ungetc(c, stdin);
-            }
-            else{
-                ungetc(c, stdin);
-            }
-            c = getchar();
             if(c == ':'){
+                optional_whitespace();
                 char c;
                 c = getchar();
-                if(c == ' '){
-                    while(c == ' '){
-                        c = getchar();
-                    }
-                    ungetc(c, stdin);
-                }
-                else{
-                    ungetc(c, stdin);
-                }
-                c = getchar();
                 if(c == '{'){
-                    char c;
-                    c = getchar();
-                    if(c == ' '){
-                        while(c == ' '){
-                            c = getchar();
-                        }
-                        ungetc(c, stdin);
-                    }
-                    else{
-                        ungetc(c, stdin);
-                    }
+                    optional_whitespace();
                     if(O()){
+                        optional_whitespace();
                         char c;
-                        c = getchar();
-                        if(c == ' '){
-                            while(c == ' '){
-                                c = getchar();
-                            }
-                            ungetc(c, stdin);
-                        }
-                        else{
-                            ungetc(c, stdin);
-                        }
                         c = getchar();
                         if(c == '}'){
                             return 1;
@@ -295,27 +231,11 @@ int C(){
                         char c;
                         c = getchar();
                         if(c == ' '){
-                            while(c == ' '){
-                                c = getchar();
-                            }
-                            ungetc(c, stdin);
                             if(I()){
-                                char c;
-                                c = getchar();
-                                if(c == ' '){
-                                    while(c == ' '){
-                                        c = getchar();
-                                    }
-                                    ungetc(c, stdin);
-                                }
-                                else{
-                                    ungetc(c, stdin);
-                                }
                                 if(C2()){
-                                        return 1;
+                                    return 1;
                                 }
                             }
-                            ungetc(c, stdin);
                         }
                         ungetc(c, stdin);
                     }
@@ -336,14 +256,7 @@ int C2(){
     c = getchar();
     /// C2-> : K
     if(c == ':'){
-        char c;
-        c = getchar();
-        if(c == ' '){
-            while(c == ' '){
-                c = getchar();
-            }
-            ungetc(c, stdin);
-        }
+        optional_whitespace();
         if(K()){
             return 1;
         }
@@ -355,55 +268,18 @@ int C2(){
         char c;
         c = getchar();
         if(c == ']'){
+            optional_whitespace();
             char c;
             c = getchar();
-            if(c == ' '){
-                while(c == ' '){
-                    c = getchar();
-                }
-                ungetc(c, stdin);
-            }
-            else{
-                ungetc(c, stdin);
-            }
-            c = getchar();
             if(c == ':'){
+                optional_whitespace();
                 char c;
                 c = getchar();
-                if(c == ' '){
-                    while(c == ' '){
-                        c = getchar();
-                    }
-                    ungetc(c, stdin);
-                }
-                else{
-                    ungetc(c, stdin);
-                }
-                c = getchar();
                 if(c == '{'){
-                    char c;
-                    c = getchar();
-                    if(c == ' '){
-                        while(c == ' '){
-                            c = getchar();
-                        }
-                        ungetc(c, stdin);
-                    }
-                    else{
-                        ungetc(c, stdin);
-                    }
+                    optional_whitespace();
                     if(P()){
+                        optional_whitespace();
                         char c;
-                        c = getchar();
-                        if(c == ' '){
-                            while(c == ' '){
-                                c = getchar();
-                            }
-                            ungetc(c, stdin);
-                        }
-                        else{
-                            ungetc(c, stdin);
-                        }
                         c = getchar();
                         if(c == '}'){
                             return 1;
@@ -444,29 +320,12 @@ int D(){
                             char c;
                             c = getchar();
                             if(c == ' '){
-                                while(c == ' '){
-                                    c = getchar();
-                                }
-                                ungetc(c, stdin);
                                 if(I()){
-                                    char c;
-                                    c = getchar();
-                                    if(c == ' '){
-                                        while(c == ' '){
-                                            c = getchar();
-                                        }
-                                        ungetc(c, stdin);
-                                    }
-                                    else{
-                                        ungetc(c, stdin);
-                                    }
                                     if(D2()){
                                         return 1;
                                     }
                                 }
-                                ungetc(c, stdin);
                             }
-                            ungetc(c, stdin);
                         }
                         ungetc(c, stdin);
                     }
@@ -487,15 +346,7 @@ int D2(){
     c = getchar();
     /// D2-> : K
     if(c == ':'){
-        char c;
-        c = getchar();
-        if(c == ' '){
-            while(c == ' '){
-                c = getchar();
-            }
-            ungetc(c, stdin);
-        }
-        ungetc(c, stdin);
+        optional_whitespace();
         if(K()){
             return 1;
         }
@@ -507,61 +358,123 @@ int D2(){
         char c;
         c = getchar();
         if(c == ']'){
+            optional_whitespace();
             char c;
             c = getchar();
-            if(c == ' '){
-                while(c == ' '){
-                    c = getchar();
-                }
-                ungetc(c, stdin);
-            }
-            else{
-                ungetc(c, stdin);
-            }
-            c = getchar();
             if(c == ':'){
+                optional_whitespace();
                 char c;
                 c = getchar();
-                if(c == ' '){
-                    while(c == ' '){
-                        c = getchar();
-                    }
-                    ungetc(c, stdin);
-                }
-                else{
-                    ungetc(c, stdin);
-                }
-                c = getchar();
                 if(c == '{'){
-                    char c;
-                    c = getchar();
-                    if(c == ' '){
-                        while(c == ' '){
-                            c = getchar();
-                        }
-                        ungetc(c, stdin);
-                    }
-                    else{
-                        ungetc(c, stdin);
-                    }
+                    optional_whitespace();
                     if(P()){
+                        optional_whitespace();
                         char c;
-                        c = getchar();
-                        if(c == ' '){
-                            while(c == ' '){
-                                c = getchar();
-                            }
-                            ungetc(c, stdin);
-                        }
-                        else{
-                            ungetc(c, stdin);
-                        }
                         c = getchar();
                         if(c == '}'){
                             return 1;
                         }
                         ungetc(c, stdin);
                     }
+                }
+                ungetc(c, stdin);
+            }
+            ungetc(c, stdin);
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    return 0;
+}
+
+int E(){
+    char c;
+    c = getchar();
+    /// E-> bool I E2
+    if(c == 'b'){
+        char c;
+        c = getchar();
+        if(c == 'o'){
+            char c;
+            c = getchar();
+            if(c == 'o'){
+                char c;
+                c = getchar();
+                if(c == 'l'){
+                    char c;
+                    c = getchar();
+                    if(c == ' '){
+                        ungetc(c, stdin);
+                        if(I()){
+                            if(E2()){
+                                return 1;
+                            }
+                        }
+                    }
+                    ungetc(c, stdin);
+                }
+                ungetc(c, stdin);
+            }
+            ungetc(c, stdin);
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    return 0;
+}
+
+int E2(){
+    char c;
+    c = getchar();
+    /// E2-> : L
+    if(c == ':'){
+        char c;
+        c = getchar();
+        if(c == ' '){
+            while(c == ' '){
+                c = getchar();
+            }
+            ungetc(c, stdin);
+            /*if(L()){
+                return 1;
+            }*/
+        }
+        ungetc(c, stdin);
+    }
+    ungetc(c, stdin);
+    c = getchar();
+    /// F2-> [] : {Q}
+    if(c == '['){
+        char c;
+        c = getchar();
+        if(c == ']'){
+            char c;
+            c = getchar();
+            if(c == ' '){
+                while(c == ' '){
+                    c = getchar();
+                }
+                if(c == ':'){
+                    char c;
+                    c = getchar();
+                    if(c == ' '){
+                        while(c == ' '){
+                            c = getchar();
+                        }
+                        if(c == '{'){
+                            /*if(Q()){
+                                char c;
+                                c = getchar();
+                                if(c == '}'){
+                                    return 1;
+                                }
+                                ungetc(c, stdin);
+                            }*/
+                            ungetc(c, stdin);
+                        }
+                        ungetc(c, stdin);
+                    }
+                    ungetc(c, stdin);
                 }
                 ungetc(c, stdin);
             }
@@ -590,21 +503,10 @@ int F(){
                     char c;
                     c = getchar();
                     if(c == ' '){
-                        while(c == ' '){
-                            c = getchar();
-                        }
                         ungetc(c, stdin);
                         if(I()){
-                            char c;
-                            c = getchar();
-                            if(c == ' '){
-                                while(c == ' '){
-                                    c = getchar();
-                                }
-                                ungetc(c, stdin);
-                                if(B2()){
-                                    return 1;
-                                }
+                            if(F2()){
+                                return 1;
                             }
                         }
                         ungetc(c, stdin);
@@ -685,7 +587,6 @@ int F2(){
 }
 
 int G(){
-    {
     char c;
     c = getchar();
     /// G-> string I G2
@@ -708,21 +609,10 @@ int G(){
                             char c;
                             c = getchar();
                             if(c == ' '){
-                                while(c == ' '){
-                                    c = getchar();
-                                }
                                 ungetc(c, stdin);
                                 if(I()){
-                                    char c;
-                                    c = getchar();
-                                    if(c == ' '){
-                                        while(c == ' '){
-                                            c = getchar();
-                                        }
-                                        ungetc(c, stdin);
-                                        if(B2()){
-                                            return 1;
-                                        }
+                                    if(G2()){
+                                        return 1;
                                     }
                                 }
                                 ungetc(c, stdin);
@@ -741,7 +631,6 @@ int G(){
     }
     ungetc(c, stdin);
     return 0;
-}
 }
 
 int G2(){
@@ -868,6 +757,7 @@ int H(){
 }
 
 int I(){
+    optional_whitespace();
     char c;
     c = getchar();
     if(c == '_' || (c >= 'a' && c <= 'z') || (c >= 'A' && c<= 'Z')){
@@ -875,6 +765,7 @@ int I(){
             c = getchar();
         }
         ungetc(c, stdin);
+        optional_whitespace();
         return 1;
     }
     ungetc(c, stdin);

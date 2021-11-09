@@ -18,9 +18,9 @@ S -> {MEA:"B"}| {MEA:"B"},|{MEAE:E"B"E}|{MEAE:E"B"E},|{S}|{S}
 -D2-> : K | [] : {P}
 E-> bool I E2
 E2-> : L | [] : {Q}
-F-> char I F2
+-F-> char I F2
 F2-> : M | [] : {R}
-G-> string I G2
+-G-> string I G2
 G2-> : N | []: {T}
 -H-> | , A | , '\n' A | '\n' | empty
 I-> ^(A-Za-z_)(A-Za-z_0-9)*     #No puede ser A,B,C,D,E,F
