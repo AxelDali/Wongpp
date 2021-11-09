@@ -16,17 +16,17 @@ S -> {MEA:"B"}| {MEA:"B"},|{MEAE:E"B"E}|{MEAE:E"B"E},|{S}|{S}
 -C2-> : K | [] : {P}
 -D-> double I D2
 -D2-> : K | [] : {P}
-E-> bool I E2
-E2-> : L | [] : {Q}
+-E-> bool I E2
+-E2-> : L | [] : {Q}
 -F-> char I F2
-F2-> : M | [] : {R}
+-F2-> : M | [] : {R}
 -G-> string I G2
-G2-> : N | []: {T}
--H-> | , A | , '\n' A | '\n' | empty
-I-> ^(A-Za-z_)(A-Za-z_0-9)*     #No puede ser A,B,C,D,E,F
+-G2-> : N | []: {T}
+-H-> , A | , '\n' A | '\n' | empty
+-I-> ^(A-Za-z_)(A-Za-z_0-9)*     #No puede ser A,B,C,D,E,F
 -J-> ^(0-9)+$
 -K-> ^(0-9)+$ | ^(0-9)+"\."(0-9)+$ | ^"\."(0-9)$
-L-> true | false | 0 | 1
+-L-> true | false | 0 | 1
 M-> ^'.'$                       #Puede haber casos especiales para los caracteres de escape '\n','\t', etc.
 N-> ^".*"$
 -O-> J, O | J
