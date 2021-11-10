@@ -1,5 +1,5 @@
 #include <iostream>
-#include <regex>
+#include <string>
 
 using namespace std;
 
@@ -689,14 +689,24 @@ int H(){
 }
 
 int I(){
+    string reserved_words[8] = {"int", "float", "double", "bool", "char", "string", "true", "false"};
     optional_whitespace();
     char c;
     c = getchar();
+    string str(1, c);
     if(c == '_' || (c >= 'a' && c <= 'z') || (c >= 'A' && c<= 'Z')){
         while(c == '_' || (c >= 'a' && c <= 'z') || (c >= 'A' && c<= 'Z') || (c >= '0' && c <= '9')){
             c = getchar();
+            str += c;
         }
         ungetc(c, stdin);
+        str.pop_back();
+        for(int i = 0 ; i < 8 ; i ++){
+            if(str == reserved_words[i]){
+                ungetc(c, stdin);
+                return 0;
+            }
+        }
         optional_whitespace();
         return 1;
     }
