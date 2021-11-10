@@ -693,7 +693,7 @@ int I(){
     char c;
     c = getchar();
     if(c == '_' || (c >= 'a' && c <= 'z') || (c >= 'A' && c<= 'Z')){
-        while(c == '_' || (c >= 'a' && c <= 'z') || (c >= 'A' && c<= 'Z' || c >= '0' && c <= '9')){
+        while(c == '_' || (c >= 'a' && c <= 'z') || (c >= 'A' && c<= 'Z') || (c >= '0' && c <= '9')){
             c = getchar();
         }
         ungetc(c, stdin);
@@ -827,17 +827,56 @@ int L(){
     return 0;
 }
 
+int valid_char(){
+    char escape_chars[11] = {'\'', '"', '?', '\\', 'a', 'b', 'f', 'n', 'r', 't', 'v'};
+    char c;
+    c = getchar();
+    if((int)c >= 32 && (int)c <= 126 && c != '"' && c != '\''){
+        if(c == '\\'){
+            char c;
+            c = getchar();
+            for(int i = 0 ; i < 11 ; i++){
+                if(c == escape_chars[i]){
+                    return 1;
+                }
+            }
+            ungetc(c, stdin);
+        }
+        return 1;
+    }
+    ungetc(c, stdin);
+    return 0;
+}
+
+int apostrophe(){
+    char c;
+    c = getchar();
+    if(c == '\''){
+        return 1;
+    }
+    ungetc(c, stdin);
+    return 0;
+}
+
 int M(){
     char c;
     c = getchar();
     //M-> ^'.'$
-    if(c == 39){
-        char c;
-        c = getchar();
-        if(c == 'Cambiar'){
+    if(c == '\''){
+        if(valid_char()){
             char c;
             c = getchar();
-            if(c == 39){
+            if(c == '\''){
+                return 1;
+            }
+            ungetc(c, stdin);
+        }
+        char c;
+        c = getchar();
+        if(c == '"'){
+            char c;
+            c = getchar();
+            if(c == '\''){
                 return 1;
             }
             ungetc(c, stdin);
@@ -845,6 +884,7 @@ int M(){
         ungetc(c, stdin);
     }
     ungetc(c, stdin);
+    return 0;
 }
 
 int N(){
@@ -852,42 +892,28 @@ int N(){
     c = getchar();
     //N-> ^".*"$
     if(c == '"'){
+        while(valid_char() || apostrophe()){
+            continue;
+        }
         char c;
         c = getchar();
-        if(c == 'Cambiar'){
-            while(c == 'Cambiar'){
-                c = getchar();
-            }
-            ungetc(c, stdin);
-            char c;
-            c = getchar();
-            if(c == '"'){
-                return 1;
-            }
-            ungetc(c, stdin);
+        if(c == '"'){
+            return 1;
         }
         ungetc(c, stdin);
     }
     ungetc(c, stdin);
+    return 0;
 }
 
 int O(){
     /// O-> J, O
     if(J()){
+        optional_whitespace();
         char c;
         c = getchar();
         if(c == ','){
-            char c;
-            c = getchar();
-            if(c == ' '){
-                while(c == ' '){
-                    c = getchar();
-                }
-                ungetc(c, stdin);
-            }
-            else{
-                ungetc(c, stdin);
-            }
+            optional_whitespace();
             if(O()){
                 return 1;
             }
@@ -900,22 +926,13 @@ int O(){
 }
 
 int P(){
-    //P-> K, P
+    /// P-> K, P
     if(K()){
+        optional_whitespace();
         char c;
         c = getchar();
         if(c == ','){
-            char c;
-            c = getchar();
-            if(c == ' '){
-                while(c == ' '){
-                    c = getchar();
-                }
-                ungetc(c, stdin);
-            }
-            else{
-                ungetc(c, stdin);
-            }
+            optional_whitespace();
             if(P()){
                 return 1;
             }
@@ -927,48 +944,59 @@ int P(){
     return 0;
 }
 
-int R(){
-    char c;
-    c = getchar();
-    //R-> M, R | M
-    if(M()){
+int Q(){
+    /// Q-> L, Q
+    if(L()){
+        optional_whitespace();
         char c;
         c = getchar();
         if(c == ','){
+            optional_whitespace();
+            if(Q()){
+                return 1;
+            }
+        }
+        ungetc(c, stdin);
+        /// Q-> L
+        return 1;
+    }
+    return 0;
+}
+
+int R(){
+    /// R-> M, R
+    if(M()){
+        optional_whitespace();
+        char c;
+        c = getchar();
+        if(c == ','){
+            optional_whitespace();
             if(R()){
                 return 1;
             }
-            ungetc(c,stdin);
         }
         ungetc(c,stdin);
-    }
-    ungetc(c, stdin);
-    if(M()){
+        /// R-> M
         return 1;
     }
-    ungetc(c,stdin);
     return 0;
 }
 
 int T(){
-    char c;
-    c = getchar();
-    //T-> N, T | N
+    /// T-> N, T
     if(N()){
+        optional_whitespace();
         char c;
         c = getchar();
         if(c == ','){
+            optional_whitespace();
             if(T()){
                 return 1;
             }
-            ungetc(c,stdin);
         }
         ungetc(c,stdin);
-    }
-    ungetc(c, stdin);
-    if(N()){
+        /// T-> N
         return 1;
     }
-    ungetc(c,stdin);
     return 0;
 }
